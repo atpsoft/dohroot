@@ -1,6 +1,8 @@
 require 'doh/findup'
 
 module Doh
+  class DohRootNotFoundException < Exception
+  end
   def self.root
     @root
   end
