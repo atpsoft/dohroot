@@ -2,7 +2,7 @@ require 'rake'
 
 Gem::Specification.new do |s|
   s.name = 'dohroot'
-  s.version = '0.1.0'
+  s.version = '0.1.1'
   s.summary = 'tiniest root of doh stuff'
   s.description = "Implements the notion of dohroot that enables most other doh stuff."
   s.require_path = 'lib'
