@@ -1,4 +1,4 @@
-require 'doh/findup'
+require 'dohroot/findup'
 
 module Doh
   class DohRootNotFoundException < Exception
