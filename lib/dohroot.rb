@@ -13,7 +13,7 @@ end
 def root=(directory)
   @root = directory
   libdir = File.join(@root, 'lib')
-  $LOAD_PATH.push(libdir) if libdir
+  $LOAD_PATH.push(libdir) if libdir && !$LOAD_PATH.include?(libdir)
 end
 
 def find_root(start_directory, filename = 'dohroot', max_tries = 20)
@@ -41,6 +41,30 @@ end
 
 def find_root_from_pwd
   Doh.find_root(Dir.pwd)
+end
+
+def use_pkg(init_file, *name_list)
+  if name_list.empty?
+    Dir.glob(File.join(Doh.root, 'pkg/*/')).each do |rootdir|
+      name_list << File.basename(rootdir)
+    end
+  end
+
+  name_list.each do |name|
+    use_one_pkg(init_file, name)
+  end
+end
+
+def use_one_pkg(init_file, name)
+  libdir = File.join(Doh.root, "pkg/#{name}/lib")
+  unless $LOAD_PATH.include?(libdir)
+    $LOAD_PATH << libdir
+  end
+
+  init_path = File.join(Doh.root, "pkg/#{name}/#{init_file}.rb")
+  if File.exist?(init_path)
+    require init_path
+  end
 end
 
 end # module Doh
