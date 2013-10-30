@@ -50,10 +50,15 @@ def use_pkg(init_file, *name_list)
     end
   end
 
+  @pkg_used ||= []
   name_list.each do |name|
+    next if @pkg_used.include?(name)
+    @pkg_used << name
     use_one_pkg(init_file, name)
   end
 end
+
+private
 
 def use_one_pkg(init_file, name)
   libdir = File.join(Doh.root, "pkg/#{name}/lib")
