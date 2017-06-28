@@ -80,7 +80,7 @@ class Options
     exception = ''
     exception << "Required options not specified: #{unset_vars.inspect}\n" unless unset_vars.size == 0
     exception << "Unknown options specified: #{varargs.inspect}\n" unless allow_unknown_options || (varargs.size == 0)
-    exception << "You must specify #{allow_unknown_options} #{unknown_options_name}#{allow_unknown_options > 1 ? 's' : ''}" if allow_unknown_options.class == Fixnum && varargs.size != allow_unknown_options
+    exception << "You must specify #{allow_unknown_options} #{unknown_options_name}#{allow_unknown_options > 1 ? 's' : ''}" if allow_unknown_options.is_a?(Numeric) && varargs.size != allow_unknown_options
     if allow_unknown_options.class == Range
       if (allow_unknown_options.min == allow_unknown_options.max)
         if (varargs.size < allow_unknown_options.min)
