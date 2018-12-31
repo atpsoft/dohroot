@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.description = "Implements the notion of dohroot that enables most other doh stuff."
   s.require_path = 'lib'
   s.required_ruby_version = '>= 2.2.0'
-  s.authors = ['Makani Mason', 'Kem Mason']
+  s.authors = ['ATPSoft']
   s.homepage = 'https://github.com/atpsoft/dohroot'
   s.license = 'MIT'
   s.email = ['devinfo@atpsoft.com']
